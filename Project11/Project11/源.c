@@ -5,40 +5,29 @@
 #include <string.h>
 char* longestPalindrome(char* s) {
     int length = strlen(s);
-    if (length == 0) {
-        return NULL;
-    }
-    if (length == 1) {
-        return s;
-    }
-    int left = 0, right = 0, L = 0, m = 0, i = 0, j = 0, flag = 0;
-    char* arr = (char*)malloc(sizeof(char) * length);
+    int left = 0, right = 0, L = 0, m = 0, i = 0, j = 0;
     for (i = 0;i < length - 1;i++) {
         for (j = i + 1;j < length;j++) {
             left = i;
             right = j;
             if (s[left] == s[right]) {
-                flag = 1;
-                if (L >= right - left + 1) {
-                    break;
-                }
                 while ((++left) <= (--right)) {
                     if (s[left] != s[right]) {
                         break;
                     }
                 }
-                if (left > right) {
+                if (left > right && L < j - i + 1) {
                     L = j - i + 1;
                     m = i;
-                    break;
                 }
             }
         }
     }
-    if (flag == 0) {
+    if (L == 0) {
         s[1] = '\0';
         return s;
     }
+    char* arr = (char*)malloc(sizeof(char) * (L + 1));
     int k = 0;
     for (k = 0;k < L;k++) {
         arr[k] = s[m];
