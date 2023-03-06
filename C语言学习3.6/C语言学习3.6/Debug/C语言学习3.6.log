@@ -1,0 +1,3 @@
+﻿  源.c
+E:\VS编译器项目\C语言学习3.6\C语言学习3.6\源.c(6,18): warning C4013: “memcmp”未定义；假设外部返回 int
+  C语言学习3.6.vcxproj -> E:\VS编译器项目\C语言学习3.6\Debug\C语言学习3.6.exe
